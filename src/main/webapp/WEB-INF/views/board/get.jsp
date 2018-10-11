@@ -60,7 +60,29 @@
             <!-- /.row -->
             <%@include file="../includes/footer.jsp" %>
     
-<script type="text/javascript" src="/resources/js/reply.js"></script>        
+<script type="text/javascript" src="/resources/js/reply.js"></script>   
+<script>
+	console.log("===============");
+	console.log("JS TEST");
+	
+	var bnoValue = '<c:out value="${board.bno}"/>';
+	
+	//for replySerice add test
+/* 	replyService.add(
+			{reply:"JS Test", replyer:"tester", bno:bnoValue}
+			,
+			function(result){
+				alert("RESULT:" + result);
+			}); */
+			
+		
+	replyService.getList({bno:bnoValue, page:1}, function(list){
+		console.log("list:" + list);
+ 		for(var i = 0, len = list.length||0; i<len; i++){
+			console.log(list[i]);
+		}
+	});
+</script>     
 <script type="text/javascript">
 $(document).ready(function(){
 	var operForm = $("#operForm");
